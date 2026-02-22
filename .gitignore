@@ -13,7 +13,7 @@ dist/
 out/
 opt/
 usr/
-build/
+
 *.deb
 
 # Logs

@@ -1,0 +1,141 @@
+:root {
+  --bg-main: #1A1A1A;
+  --bg-sidebar: #252525;
+  --bg-card: #252525;
+  --bg-input: #2A2A2A;
+  --bg-topbar: #1E1E1E;
+  --text-primary: #FFFFFF;
+  --text-secondary: #A0A0A0;
+  --border: #404040;
+  --hover: #333333;
+  --btn-secondary: #333333;
+  --btn-create-bg: #333333;
+  --btn-create-text: #FFFFFF;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+}
+
+.top-bar {
+  background-color: var(--bg-topbar);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.search-input {
+  background-color: var(--bg-input);
+  border-color: var(--border);
+  color: var(--text-primary);
+}
+
+.search-input::placeholder {
+  color: var(--text-secondary);
+}
+
+.icon-btn {
+  color: var(--text-secondary);
+}
+
+.icon-btn:hover {
+  background-color: var(--hover);
+}
+
+.dropdown-menu {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+}
+
+.dropdown-item {
+  color: var(--text-primary);
+}
+
+.dropdown-item:hover {
+  background-color: var(--hover);
+}
+
+.sidebar {
+  background-color: var(--bg-sidebar);
+}
+
+.btn-create {
+  background-color: var(--btn-create-bg);
+  color: var(--btn-create-text);
+}
+
+.btn-create:hover {
+  background-color: #404040;
+}
+
+.app-item:hover,
+.app-item.active {
+  background-color: var(--hover);
+}
+
+.app-item-title {
+  color: var(--text-primary);
+}
+
+.app-item-edit {
+  color: var(--text-secondary);
+}
+
+.content {
+  background-color: var(--bg-main);
+}
+
+.card {
+  background-color: var(--bg-card);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.card-title {
+  color: var(--text-primary);
+}
+
+.form-label {
+  color: var(--text-primary);
+}
+
+.form-input,
+.form-select {
+  background-color: var(--bg-input);
+  border-color: var(--border);
+  color: var(--text-primary);
+}
+
+.form-input::placeholder {
+  color: var(--text-secondary);
+}
+
+.form-input:focus,
+.form-select:focus {
+  border-color: #2196F3;
+}
+
+.upload-area {
+  border-color: var(--border);
+  background-color: var(--bg-card);
+}
+
+.upload-area:hover {
+  background-color: var(--hover);
+}
+
+.upload-icon {
+  color: var(--text-secondary);
+}
+
+.upload-text {
+  color: var(--text-secondary);
+}
+
+.icon-display {
+  border-color: var(--border);
+  background-color: var(--bg-card);
+}
+
+
+.form-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23A0A0A0' d='M3 4l3 4 3-4'/%3E%3C/svg%3E");
+}

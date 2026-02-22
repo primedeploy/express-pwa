@@ -1,0 +1,135 @@
+:root {
+  --bg-main: #F5F5F5;
+  --bg-sidebar: #F0F0F0;
+  --bg-card: #FFFFFF;
+  --bg-input: #F5F5F5;
+  --bg-topbar: #FFFFFF;
+  --text-primary: #000000;
+  --text-secondary: #808080;
+  --border: #D0D0D0;
+  --hover: #E0E0E0;
+  --btn-secondary: #E0E0E0;
+  --btn-create-bg: #2196F3;
+  --btn-create-text: #FFFFFF;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+}
+
+.top-bar {
+  background-color: var(--bg-topbar);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-input {
+  background-color: var(--bg-input);
+  border-color: var(--border);
+  color: var(--text-primary);
+}
+
+.search-input::placeholder {
+  color: var(--text-secondary);
+}
+
+.icon-btn {
+  color: var(--text-primary);
+}
+
+.icon-btn:hover {
+  background-color: var(--hover);
+}
+
+.dropdown-menu {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+}
+
+.dropdown-item {
+  color: var(--text-primary);
+}
+
+.dropdown-item:hover {
+  background-color: var(--hover);
+}
+
+.sidebar {
+  background-color: var(--bg-sidebar);
+}
+
+.btn-create {
+  background-color: var(--btn-create-bg);
+  color: var(--btn-create-text);
+}
+
+.btn-create:hover {
+  background-color: #1976D2;
+}
+
+.app-item:hover {
+  background-color: var(--hover);
+}
+
+.app-item-title {
+  color: var(--text-primary);
+}
+
+.app-item-edit {
+  color: var(--text-secondary);
+}
+
+.content {
+  background-color: var(--bg-main);
+}
+
+.card {
+  background-color: var(--bg-card);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+  color: var(--text-primary);
+}
+
+.form-label {
+  color: var(--text-primary);
+}
+
+.form-input,
+.form-select {
+  background-color: var(--bg-input);
+  border-color: var(--border);
+  color: var(--text-primary);
+}
+
+.form-input::placeholder {
+  color: var(--text-secondary);
+}
+
+.form-input:focus,
+.form-select:focus {
+  border-color: #2196F3;
+}
+
+.upload-area {
+  border-color: var(--border);
+  background-color: var(--bg-card);
+}
+
+.upload-area:hover {
+  background-color: var(--hover);
+}
+
+.upload-icon {
+  color: var(--text-secondary);
+}
+
+.upload-text {
+  color: var(--text-secondary);
+}
+
+.icon-display {
+  border-color: var(--border);
+  background-color: var(--bg-card);
+}

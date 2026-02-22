@@ -1,0 +1,81 @@
+{
+  "name": "express-pwa",
+	"slug": "Exress PWA",
+  "version": "25.02.20",
+  "description": "Fully open-source app for creating PWAs (Progressive Web Applications) for the Gnome / Xorg environment.",
+  "main": "src/main.js",
+  "homepage": "https://primedeploy.com/app/express-pwa",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/primedeploy/express-pwa.git"
+  },
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --enable-logging",
+    "prebuild": "node scripts/generate-icons.js",
+    "build": "electron-builder --linux deb",
+    "package:deb": "electron-builder --linux deb"
+  },
+  "author": {
+    "name": "Prime Deploy",
+    "email": "support@primedeploy.com",
+    "url": "https://primedeploy.com"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.1"
+  },
+  "dependencies": {
+    "sql.js": "^1.10.0"
+  },
+  "build": {
+    "appId": "com.primedeploy.expresspwa",
+    "productName": "Express PWA",
+    "linux": {
+      "target": ["deb"],
+      "category": "Utility",
+      "icon": "build/icons",
+      "executableArgs": ["--no-sandbox"],
+      "maintainer": "Prime Deploy <support@primedeploy.com>",
+      "vendor": "Prime Deploy",
+      "synopsis": "Create Progressive Web Applications for Gnome/Xorg",
+      "description": "Create Progressive Web Applications for Gnome/Xorg",
+      "desktop": {
+        "Name": "Express PWA",
+        "GenericName": "PWA Creator",
+        "Comment": "Create Progressive Web Applications for Gnome/Xorg",
+        "Categories": "Utility;Development;GTK;GNOME;",
+        "StartupWMClass": "express-pwa",
+        "StartupNotify": "true",
+        "Terminal": "false",
+        "Type": "Application",
+        "Keywords": "pwa;web;app;progressive;website;browser;"
+      }
+    },
+    "deb": {
+      "depends": ["libgtk-3-0", "libnotify4", "libnss3", "libxss1", "libxtst6", "xdg-utils"],
+      "priority": "optional",
+      "afterInstall": "scripts/postinst.sh"
+    },
+    "files": [
+      "src/**/*",
+      "assets/**/*",
+      "build/icons/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "extraResources": [
+      {
+        "from": "node_modules/sql.js/dist/sql-wasm.wasm",
+        "to": "sql-wasm.wasm"
+      },
+      {
+        "from": "build/icons",
+        "to": "icons"
+      }
+    ]
+  }
+}

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; img-src 'self' data:">
+  <title>Express PWA</title>
+  <link rel="icon" href="../images/icon.png">
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/light.css" id="theme-light">
+  <link rel="stylesheet" href="styles/dark.css" id="theme-dark" disabled>
+</head>
+<body>
+  <div class="app-container">
+    <header class="top-bar" id="title-bar">
+      <div class="top-bar-left">
+        <img src="../images/icon.png" alt="Express PWA" class="logo-img">
+        <span class="app-title">Express PWA</span>
+      </div>
+      <div class="top-bar-center">
+        <input type="text" class="search-input" placeholder="Search..." id="search-input">
+      </div>
+      <div class="top-bar-right">
+        <div class="settings-dropdown">
+          <button class="icon-btn" id="settings-btn" aria-label="Settings">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+              <circle cx="10" cy="4" r="2"/>
+              <circle cx="10" cy="10" r="2"/>
+              <circle cx="10" cy="16" r="2"/>
+            </svg>
+          </button>
+          <div class="dropdown-menu" id="settings-menu">
+            <button class="dropdown-item" id="menu-about">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                <circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                <text x="8" y="12" text-anchor="middle" font-size="10" font-weight="bold">i</text>
+              </svg>
+              About
+            </button>
+            <button class="dropdown-item" id="menu-repository">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+              </svg>
+              Visit Repository
+            </button>
+          </div>
+        </div>
+        <button class="icon-btn window-control" id="minimize-btn" aria-label="Minimize">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+            <rect x="1" y="5" width="10" height="2"/>
+          </svg>
+        </button>
+        <button class="icon-btn window-control close-btn" id="close-btn" aria-label="Close">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+            <path d="M1 1L11 11M11 1L1 11" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="main-container">
+      <aside class="sidebar">
+        <button class="btn-create" id="btn-create-new">
+          <span>+</span> Create
+        </button>
+        <nav class="app-list" id="app-list">
+        </nav>
+      </aside>
+
+      <main class="content">
+        <div class="card" id="create-form">
+          <h2 class="card-title">Create a new PWA</h2>
+          <form id="pwa-form">
+            <div class="form-group">
+              <label class="form-label">Add Icon</label>
+              <div class="upload-area" id="icon-upload">
+                <div id="upload-content" style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                  <div class="upload-icon">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="currentColor">
+                      <path d="M20 8L20 28M12 16L20 8L28 16" stroke="currentColor" stroke-width="2" fill="none"/>
+                      <path d="M8 32H32" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                  </div>
+                  <p class="upload-text">Drag and drop or click to upload</p>
+                </div>
+                <div class="icon-preview-container" id="icon-preview-container" style="display: none;">
+                  <img id="icon-preview" class="icon-preview-lg">
+                  <button type="button" class="btn-remove-icon" id="btn-remove-icon" title="Remove icon">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                      <path d="M4 4L12 12M12 4L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </button>
+                </div>
+                <input type="file" id="icon-input" accept="image/*,.svg" hidden>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="app-title">Title</label>
+              <input type="text" class="form-input" id="app-title" placeholder="e.g., My Awesome PWA" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="app-url">URL</label>
+              <input type="url" class="form-input" id="app-url" placeholder="e.g., https://myapp.com" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="app-browser">Select browser</label>
+              <select class="form-select" id="app-browser" required>
+                <option value="firefox">Firefox</option>
+                <option value="chrome">Chrome</option>
+                <option value="edge">Edge</option>
+              </select>
+            </div>
+            <button type="submit" class="btn-primary" id="btn-submit">Generate and install</button>
+          </form>
+        </div>
+
+        <div class="card" id="edit-form" style="display: none;">
+          <h2 class="card-title" id="edit-title">Edit App: <span id="edit-app-name"></span></h2>
+          <form id="edit-pwa-form">
+            <input type="hidden" id="edit-app-id">
+            <div class="form-group">
+              <label class="form-label">App Icon</label>
+              <div class="icon-display" id="edit-icon-display">
+                <div class="icon-preview-container" id="edit-icon-preview-container">
+                  <img id="edit-icon-preview" class="icon-preview-lg">
+                  <button type="button" class="btn-remove-icon" id="btn-remove-edit-icon" title="Remove icon">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                      <path d="M4 4L12 12M12 4L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </button>
+                </div>
+                <input type="file" id="edit-icon-input" accept="image/*,.svg" hidden>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="edit-app-title">Title</label>
+              <input type="text" class="form-input" id="edit-app-title" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="edit-app-url">URL</label>
+              <input type="url" class="form-input" id="edit-app-url" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="edit-app-browser">Select browser</label>
+              <select class="form-select" id="edit-app-browser" required>
+                <option value="firefox">Firefox</option>
+                <option value="chrome">Chrome</option>
+                <option value="edge">Edge</option>
+              </select>
+            </div>
+            <div class="btn-group">
+              <button type="submit" class="btn-primary">Save Changes</button>
+              <button type="button" class="btn-danger" id="btn-delete">Delete App</button>
+            </div>
+          </form>
+        </div>
+      </main>
+    </div>
+  </div>
+  <script src="js/app.js"></script>
+</body>
+</html>

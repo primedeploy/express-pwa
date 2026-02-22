@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+
+# Environment
+.env
+
+# Agent files
+.agent/
+AGENT_PROMPT.md
+
+# Build outputs
+dist/
+out/
+opt/
+usr/
+build/
+*.deb
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# Database
+*.db
